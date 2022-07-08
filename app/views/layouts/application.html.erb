@@ -17,6 +17,23 @@
     <% if flash[:alert] %>
       <p class="alert"><%= alert %></p>
     <% end %>
+
+    <div class="navbar">
+      <%= link_to root_path do %>
+  			<h1>Members-Only</h1>
+  		<% end %>
+
+      <% if user_signed_in? %>
+        <%= link_to current_user.username, edit_user_registration_path  %>
+        <!-- Using link_to for Sign out doesn't work. -->
+        <%= button_to "Sign Out", destroy_user_session_path, method: :delete %>
+      <% else %>
+        <%= link_to "Sign in", user_session_path  %>
+        <%= link_to "Sign up", new_user_registration_path  %>
+      <% end %>
+
+      
+    </div>
     
     <%= yield %>
   </body>

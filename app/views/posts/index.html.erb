@@ -1,0 +1,31 @@
+<% if user_signed_in? %>
+    <%= link_to new_post_path do%>
+        <div class="new_post"> 
+            <span>New Post</span>
+            <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" />
+            </svg>
+        </div> 
+    <% end %>
+<% else %>
+    <%= %>
+    
+<% end %>
+
+<% @posts.each do |post| %>
+    <div class="post">
+        <% if user_signed_in? %>
+            <div >
+                <span class="title"><%= post.title %> </span> 
+                <span class="author">by: <%= post.user.username %></span>
+            </div>
+        <% else %>
+            <div>
+                <span class="title"><%= post.title %> </span> 
+                <span class="author">by: Anonymous poster</span>
+            </div>
+        <% end %>
+        <hr>
+        <div class="body"><%= post.body %></div>
+    </div>
+<% end %>
