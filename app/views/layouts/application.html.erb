@@ -25,7 +25,7 @@
 
       <% if user_signed_in? %>
         <%= link_to current_user.username, edit_user_registration_path  %>
-        <!-- Using link_to for Sign out doesn't work. -->
+        <!-- Using link_to for Sign out doesn't work. https://stackoverflow.com/questions/9590598/devise-rails-no-route-matches-get-users-sign-out -->
         <%= button_to "Sign Out", destroy_user_session_path, method: :delete %>
       <% else %>
         <%= link_to "Sign in", user_session_path  %>
